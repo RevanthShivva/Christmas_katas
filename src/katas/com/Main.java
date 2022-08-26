@@ -1,11 +1,14 @@
 package katas.com;
 
+import katas.com.interfaces.Grid;
+
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        LightningGrid lightningGrid = new LightningGrid();
+        Grid grid = new LightningGrid();
+        Grid brightnessControl = new BrightnessControl();
         int n;
         System.out.println("No of instructions: ");
         n = sc.nextInt();
@@ -20,13 +23,16 @@ public class Main {
             int column2 = sc.nextInt();
 
             System.out.println("Specify 1 for Turn on or 2 for Turn off or 3 for Toggle");
-            int operation = sc.nextInt();
+            String operation = sc.nextLine();
 
-            lightningGrid.performProcedure(row1, column1, row2, column2, operation);
+            grid.performProcedure(row1, column1, row2, column2, operation);
+
+           brightnessControl.performProcedure(row1, column1, row2, column2, operation);
 
 
         }
-        System.out.println(lightningGrid.countNoOfLights());
+        System.out.println("Lightning control : " + grid.countNoOfLights());
+        System.out.println(" Brightness control : " + brightnessControl.countNoOfLights());
 
     }
 }

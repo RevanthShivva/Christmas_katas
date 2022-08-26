@@ -1,10 +1,12 @@
 package katas.com;
 
-public class LightningGrid {
+import katas.com.interfaces.Grid;
+
+public class LightningGrid implements Grid {
     private final int[][] arr = new int[1000][1000];
 
-   public void performProcedure(int row1, int column1, int row2, int column2, int operation){
-       if(operation == 1){
+   public void performProcedure(int row1, int column1, int row2, int column2, String operation){
+       if(operation.equals(Operation.TURNON)){
            for(int i=row1;i<=row2;i++)
            {
                for(int j=column1;j<=column2;j++){
@@ -13,7 +15,7 @@ public class LightningGrid {
                }
            }
        }
-       else if (operation == 2) {
+       else if (operation.equals(Operation.TURNOFF)) {
            for(int i=row1;i<=row2;i++)
            {
                for(int j=column1;j<=column2;j++){
@@ -22,7 +24,7 @@ public class LightningGrid {
                }
            }
        }
-       else{
+       else if(operation.equals(Operation.TOGGLE)){
            for(int i=row1;i<=row2;i++)
            {
                for(int j=column1;j<=column2;j++){
@@ -42,6 +44,8 @@ public class LightningGrid {
        return count.countNoOfLights(arr);
 
    }
+
+
 
 
 
